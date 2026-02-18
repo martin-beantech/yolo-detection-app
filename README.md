@@ -2,7 +2,7 @@
 
 A complete full-stack web application for real-time object detection using YOLOv8, built with Angular frontend and FastAPI backend.
 
-![YOLO Detection App](https://img.shields.io/badge/YOLO-v8-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green) ![Angular](https://img.shields.io/badge/Angular-17+-red)
+![YOLO Detection App](https://img.shields.io/badge/YOLO-v8-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green) ![Angular](https://img.shields.io/badge/Angular-19.2.18-red)
 
 ## 🌟 Features
 
