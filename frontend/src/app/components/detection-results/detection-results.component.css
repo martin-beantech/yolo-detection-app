@@ -1,0 +1,125 @@
+.results-container {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.summary-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 150px;
+  background-color: #1a202c;
+  border: 1px solid #4a5568;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #a0aec0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table-container {
+  overflow-x: auto;
+  background-color: #1a202c;
+  border: 1px solid #4a5568;
+  border-radius: 8px;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.results-table thead {
+  background-color: #2d3748;
+}
+
+.results-table th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #e2e8f0;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #4a5568;
+}
+
+.results-table tbody tr {
+  border-bottom: 1px solid #2d3748;
+  transition: background-color 0.2s ease;
+}
+
+.results-table tbody tr:hover {
+  background-color: #2d3748;
+}
+
+.results-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.results-table td {
+  padding: 14px 16px;
+  color: #cbd5e0;
+}
+
+.class-name {
+  font-weight: 600;
+  color: #e2e8f0;
+  text-transform: capitalize;
+}
+
+.confidence-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.confidence-badge.high {
+  background-color: #22543d;
+  color: #68d391;
+}
+
+.confidence-badge.medium {
+  background-color: #744210;
+  color: #f6ad55;
+}
+
+.confidence-badge.low {
+  background-color: #742a2a;
+  color: #fc8181;
+}
+
+.bbox {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: #a0aec0;
+  background-color: #1a202c;
+  border: 1px solid #4a5568;
+  border-radius: 8px;
+  margin-top: 24px;
+}
