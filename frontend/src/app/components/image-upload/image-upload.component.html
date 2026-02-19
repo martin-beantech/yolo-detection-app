@@ -1,0 +1,36 @@
+<div class="upload-container">
+  <div 
+    class="drop-zone"
+    [class.dragging]="isDragging"
+    [class.has-image]="imagePreview"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+  >
+    <div *ngIf="!imagePreview" class="upload-prompt">
+      <div class="upload-icon">📁</div>
+      <p class="upload-text">Drag & drop an image here</p>
+      <p class="upload-subtext">or</p>
+      <label for="file-input" class="file-button">Browse Files</label>
+      <input 
+        id="file-input"
+        type="file" 
+        accept="image/jpeg,image/jpg,image/png,image/webp"
+        (change)="onFileSelected($event)"
+        style="display: none;"
+      />
+      <p class="upload-hint">Supports: JPG, PNG, WebP (Max 10MB)</p>
+    </div>
+    
+    <div *ngIf="imagePreview" class="preview-container">
+      <img [src]="imagePreview" alt="Preview" class="preview-image" />
+      <button class="clear-button" (click)="clearImage()" type="button">
+        ✕ Clear Image
+      </button>
+    </div>
+  </div>
+  
+  <div *ngIf="error" class="error-message">
+    ⚠️ {{ error }}
+  </div>
+</div>

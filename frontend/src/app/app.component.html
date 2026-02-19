@@ -1,0 +1,78 @@
+<div class="app-container">
+  <header class="header">
+    <h1>🔍 {{ title }}</h1>
+    <div class="status-indicator" [class.connected]="apiHealth === 'connected'" [class.disconnected]="apiHealth === 'disconnected'">
+      <span class="status-dot"></span>
+      API: {{ apiHealth }}
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Upload Section -->
+    <section class="upload-section">
+      <h2>Upload Image</h2>
+      <app-image-upload (imageSelected)="onImageSelected($event)"></app-image-upload>
+      
+      <div *ngIf="selectedFile" class="controls">
+        <div class="confidence-control">
+          <label for="confidence">Confidence Threshold: {{ confidenceThreshold }}</label>
+          <input 
+            id="confidence"
+            type="range" 
+            min="0.1" 
+            max="1.0" 
+            step="0.05" 
+            [(ngModel)]="confidenceThreshold"
+            class="confidence-slider"
+          />
+        </div>
+        
+        <div class="button-group">
+          <button 
+            class="btn btn-primary" 
+            (click)="onDetect()" 
+            [disabled]="isLoading"
+          >
+            <span *ngIf="!isLoading">🎯 Detect Objects</span>
+            <span *ngIf="isLoading" class="loading-spinner">⏳ Processing...</span>
+          </button>
+          <button 
+            class="btn btn-secondary" 
+            (click)="resetDetection()"
+            [disabled]="isLoading"
+          >
+            🔄 Reset
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Error Message -->
+    <div *ngIf="error" class="error-banner">
+      <strong>❌ Error:</strong> {{ error }}
+    </div>
+
+    <!-- Results Section -->
+    <section *ngIf="detectionResponse" class="results-section">
+      <h2>Detection Results</h2>
+      
+      <!-- Canvas with bounding boxes -->
+      <app-detection-canvas
+        [imageUrl]="imagePreview"
+        [detections]="detectionResponse.detections"
+        [imageWidth]="detectionResponse.image_width"
+        [imageHeight]="detectionResponse.image_height"
+      ></app-detection-canvas>
+      
+      <!-- Results table -->
+      <app-detection-results
+        [detections]="detectionResponse.detections"
+        [inferenceTime]="detectionResponse.inference_time_ms"
+      ></app-detection-results>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Powered by YOLOv8 | Angular + FastAPI</p>
+  </footer>
+</div>

@@ -1,0 +1,48 @@
+<div class="results-container" *ngIf="detections.length > 0">
+  <div class="summary-stats">
+    <div class="stat-card">
+      <div class="stat-value">{{ detections.length }}</div>
+      <div class="stat-label">Total Detections</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ uniqueClasses.size }}</div>
+      <div class="stat-label">Unique Classes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ inferenceTime.toFixed(0) }}ms</div>
+      <div class="stat-label">Inference Time</div>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Class Name</th>
+          <th>Confidence</th>
+          <th>Bounding Box</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detection of sortedDetections; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td class="class-name">{{ detection.class_name }}</td>
+          <td>
+            <span 
+              class="confidence-badge" 
+              [ngClass]="getConfidenceClass(detection.confidence)"
+            >
+              {{ (detection.confidence * 100).toFixed(1) }}%
+            </span>
+          </td>
+          <td class="bbox">{{ formatBBox(detection) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="no-results" *ngIf="detections.length === 0">
+  <p>No detections found. Try uploading a different image or adjusting the confidence threshold.</p>
+</div>

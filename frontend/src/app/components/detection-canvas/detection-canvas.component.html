@@ -1,0 +1,15 @@
+<div class="canvas-container" *ngIf="imageUrl">
+  <div class="image-wrapper">
+    <img 
+      #imageElement
+      [src]="imageUrl" 
+      alt="Detection Image" 
+      class="detection-image"
+      (load)="onImageLoad()"
+    />
+    <canvas 
+      #canvas
+      class="detection-canvas"
+    ></canvas>
+  </div>
+</div>
